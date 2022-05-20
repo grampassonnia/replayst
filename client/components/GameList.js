@@ -67,10 +67,9 @@ function GameList({
         )}
         maxToRenderPerBatch={3}
         onEndReached={() => {
-          console.log('fired');
-          if (nextUrl) return infiniteScroll(nextUrl); //UNCOMMENT TO ACTIVATE INFINITE SCROLL
-        }} // <-- when we call a function directly in JSX we need to put it in a callback function!!!
-        onEndReachedThreshold={0.1} // TODO check how many times it gets fired with the active infinite scroll
+          if (nextUrl) return infiniteScroll(nextUrl);
+        }}
+        onEndReachedThreshold={0.1}
         ListHeaderComponent={isFromCollection ? GameListHeader : null}
       />
 

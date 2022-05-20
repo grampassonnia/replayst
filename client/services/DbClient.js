@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000';
+const baseURL = process.env.BASE_URL;
 
 export async function getUserCollection(id) {
   return fetch(`${baseURL}/list/${id}`)

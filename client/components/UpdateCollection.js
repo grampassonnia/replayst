@@ -8,10 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { PALETTE } from '../services/theme';
 import { UserContext } from './UserContext';
 
-// TODO handle the remove from collection case, with an alert for accidental press
 export default function UpdateCollection({
   game,
-  //setGame, // logic for platform ownership feature
   match,
   setList,
   list,
@@ -23,15 +21,12 @@ export default function UpdateCollection({
   const [renderedList] = rendered;
   const [gamesToRender, setGamesToRender] = toRender;
 
-  const userId =
-    /* vic: '6266679c68159251ea6f845d';  filo:*/ '6261e0b712592ddafe9b6aa2'; // TODO make it dynamic by user
+  const userId = '6261e0b712592ddafe9b6aa2';
   return (
     <Pressable
       onPress={() =>
         !isAdded
           ? addGameToCollection(userId, game, list).then(res => {
-              // setGame(res.added); // logic ready for platform ownership feature
-              // console.log(res); // --> after a while it breaks by itself!
               setIsAdded(!isAdded);
               setList(prev => [
                 {

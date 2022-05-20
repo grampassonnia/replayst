@@ -1,13 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './HomeScreen';
-import GameDetailsScreen from './GameDetailsScreen';
-import SearchScreen from './SearchScreen';
+import GameDetailsScreen from '../GameDetailsScreen';
+import SearchScreen from '../SearchScreen';
 import { Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import SearchGameBar from './SearchGameBar';
+import SearchGameBar from '../../components/SearchGameBar';
 import { useRef, useState } from 'react';
-import { searchGamesFromAPI } from '../services/ApiClient';
+import { searchGamesFromAPI } from '../../services/ApiClient';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -20,11 +20,7 @@ function Home() {
   function handleOnSubmit() {
     searchGamesFromAPI(search).then((res) => {
       if (searchResults.length)
-        listViewRef.current.scrollToOffset({ offset: 0, animated: true }); // flatlist auto-scroll to top
-      // setTimout necessary cause searchGameBar renders in the same screen,
-      // if deep in the infinite scoll it fires again before reaching the top of the bar.
-      // TODO Better solution would be render each result list in a new screen
-      //(no need to trigger scroll to top) and save search history on search page
+        listViewRef.current.scrollToOffset({ offset: 0, animated: true });
       setTimeout(() => {
         setNextSearchUrl(res.next);
         setSearchResults(res.results);
@@ -37,7 +33,7 @@ function Home() {
     <NavigationContainer independent={true}>
       <HomeStack.Navigator>
         <HomeStack.Screen
-          name="Home"
+          name="Explore"
           component={HomeScreen}
           options={({ navigation }) => ({
             headerTintColor: '#dedbd6',
@@ -66,10 +62,6 @@ function Home() {
               setSearchResults={setSearchResults}
               nextSearchUrl={nextSearchUrl}
               setNextSearchUrl={setNextSearchUrl}
-              // tiles={searchResults} // WARNING --> NEEDED A PROP NAME CHANGE
-              // seTiles={setSearchResults} // --> SAME AS ABOVE (needed for infinite loop?)
-              // nextUrl={nextSearchUrl} // --> SAME AS ABOVE
-              // setNextUrl={setNextSearchUrl} // --> SAME AS ABOVE
               listViewRef={listViewRef}
             />
           )}

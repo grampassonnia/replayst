@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './Home';
-import Collection from './Collection';
-import { UserProvider } from './UserContext';
+import Home from './home/Home';
+import Collection from './collection/Collection';
+import { UserProvider } from '../components/UserContext';
 import { Ionicons } from '@expo/vector-icons';
 import { PALETTE } from '../services/theme';
 const Tab = createBottomTabNavigator();
@@ -21,8 +21,6 @@ function Main() {
                 ? 'ios-game-controller'
                 : 'ios-game-controller-outline';
             }
-
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: PALETTE.four,

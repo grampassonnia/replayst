@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { fetchOne } from '../services/ApiClient';
 import { DateTime } from 'luxon';
-import UpdateCollection from './UpdateCollection';
-import { UserContext } from './UserContext';
+import UpdateCollection from '../components/UpdateCollection';
+import { UserContext } from '../components/UserContext';
 import { PALETTE } from '../services/theme';
 
 export default function GameDetailsScreen(props) {
@@ -23,14 +23,12 @@ export default function GameDetailsScreen(props) {
   const [whish, setWish] = wishlist;
   const [favs, setFavs] = favorites;
 
-  // check if the games is in the collection and make the call accordingly
   const ownedMatch = ownedIds.some(id => id === props.route.params.id);
   const wishMatch = wishIds.some(id => id === props.route.params.id);
   const favMatch = favsIds.some(id => id === props.route.params.id);
   const source = ownedMatch || wishMatch || favMatch ? 'DB' : 'API';
 
   useEffect(() => {
-    console.log(source);
     fetchOne(props.route.params.id, source).then(res => setGame(res));
   }, []);
 
@@ -51,7 +49,6 @@ export default function GameDetailsScreen(props) {
               setList={setFavs}
               addIcon={'ios-heart-outline'}
               removeIcon={'ios-heart'}
-              //setGame={setGame} // TODO for platform ownership feature
             />
             <UpdateCollection
               match={wishMatch}
@@ -60,7 +57,6 @@ export default function GameDetailsScreen(props) {
               setList={setWish}
               addIcon={'ios-star-outline'}
               removeIcon={'ios-star'}
-              //setGame={setGame} // TODO for platform ownership feature
             />
             <UpdateCollection
               match={ownedMatch}
@@ -69,7 +65,6 @@ export default function GameDetailsScreen(props) {
               setList={setPwned}
               addIcon={'ios-add-circle-outline'}
               removeIcon={'ios-checkmark-circle'}
-              //setGame={setGame} // TODO for platform ownership feature
             />
           </View>
           <View style={styles.bodyText}>

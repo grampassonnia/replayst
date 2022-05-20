@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import GameList from './GameList';
-import { getPopularGames, fetchMore } from '../services/ApiClient';
+import GameList from '../../components/GameList';
+import { getPopularGames, fetchMore } from '../../services/ApiClient';
 
 export default function HomeScreen() {
   const [tiles, setTiles] = useState([]);
@@ -12,17 +12,14 @@ export default function HomeScreen() {
         setNextUrl(res.next);
         setTiles(res.results);
       })
-      .then(console.log('\nUSE EFFETCT AND API CALL\n')); // TODO delete line
   }, []);
 
-  //TODO modify infinite scroll to be list-length aware
   function infiniteScroll(url) {
     if (nextUrl) {
       fetchMore(url).then(res =>
         setTiles(prev => [...prev, ...res.results], setNextUrl(res.next))
       );
     }
-    // setState accepts a callback function as a 2nd argument that gets executed once the new state is set
   }
 
   return (

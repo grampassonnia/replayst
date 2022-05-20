@@ -10,7 +10,6 @@ function GameTile({ game, cols }) {
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => {
-          console.log('click');
           navigation.navigate('Details', {
             id: game.id
           });

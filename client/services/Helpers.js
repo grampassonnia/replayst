@@ -32,7 +32,5 @@ export function filterSingleGameResult(res) {
     developers: res.developers
   };
 
-  //console.log(JSON.stringify(game)); // TODO delete log
-
   return game;
 }

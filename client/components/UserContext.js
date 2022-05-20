@@ -4,12 +4,11 @@ import { getUserCollection } from '../services/DbClient';
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  //const [nextUrl, setNextUrl] = useState(''); //TODO pagination
-  const [toRender, setToRender] = useState([]); // to be rendered on user side
+  const [toRender, setToRender] = useState([]);
   const [rendered, setRendered] = useState('owned');
-  const [owned, setOwned] = useState([]); // OWNED
-  const [wishlist, setWishlist] = useState([]); // WL
-  const [favorites, setFavorites] = useState([]); // FAV
+  const [owned, setOwned] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const ownedIds = owned && owned.map((tile) => tile.id);
   const wishIds = wishlist && wishlist.map((game) => game.id);
   const favsIds = favorites && favorites.map((game) => game.id);
@@ -24,17 +23,14 @@ const UserProvider = ({ children }) => {
     wishIds: wishIds,
     favsIds: favsIds
   };
-  // call user collection at loading, rerenders only on value change
-  const userId = '6261e0b712592ddafe9b6aa2';
-    /*'6266679c68159251ea6f845d'; //filo*/
+  // set user Id for local database
+  const userId = process.env.USER_ID;
   useEffect(() => {
     getUserCollection(userId).then((res) => {
-      // setNextUrl(res.next); // TODO ONLY FOR PAGINATION, to eventually implement on the backend
       setToRender(res.owned);
       setOwned(res.owned);
       setFavorites(res.favorites);
       setWishlist(res.wishlist);
-      console.log('MAIN');
     });
   }, []);
 
