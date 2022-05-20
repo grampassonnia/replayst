@@ -25,7 +25,7 @@ export async function fetchMore(url) {
   return fetch(url)
     .then((res) => (res.status < 400 ? res : Promise.reject(res)))
     .then((res) => res.json())
-    .then((res) => filterTileResult(res))
+    .then((res) => res = filterTileResult(res))
     .catch((err) => console.error(err, err.message));
 }
 

@@ -25,8 +25,8 @@ const UserProvider = ({ children }) => {
     favsIds: favsIds
   };
   // call user collection at loading, rerenders only on value change
-  const userId =
-    /*'6266679c68159251ea6f845d'; //filo*/ '6261e0b712592ddafe9b6aa2';
+  const userId = '6261e0b712592ddafe9b6aa2';
+    /*'6266679c68159251ea6f845d'; //filo*/
   useEffect(() => {
     getUserCollection(userId).then((res) => {
       // setNextUrl(res.next); // TODO ONLY FOR PAGINATION, to eventually implement on the backend
