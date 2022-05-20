@@ -1,23 +1,5 @@
 const User = require('../models/user');
 const Game = require('../models/game');
-const bcrypt = require('bcrypt');
-
-// NOT IMPLEMENTED YET
-async function createUser(req, res) {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (user) {
-    return res.status(409).send({ error: '409', message: 'Wrong credentials' });
-  }
-  try {
-    if (password === '') throw new Error();
-    const pswd = await bcrypt.hash(password, +process.env.SALT);
-    const newUser = await User.create({ ...req.body, password: pswd });
-    res.status(201).send(newUser);
-  } catch (err) {
-    res.status(400).send({ error, message: 'Error, please retry' });
-  }
-}
 
 async function getUserGames(req, res) {
   try {
@@ -91,7 +73,6 @@ async function removeOwnedGame(req, res) {
 }
 
 module.exports = {
-  createUser,
   addGameToUser,
   removeOwnedGame,
   getUserGames,

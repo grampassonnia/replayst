@@ -5,14 +5,11 @@ const {
 } = require('./middleware/helpers');
 
 const {
-  createUser,
   getUserGames,
   addGameToUser,
   removeOwnedGame,
   getOneGame
 } = require('./controllers/user');
-
-router.post('/register', createUser);
 
 router.get('/list/:userId', getUserGames);
 
