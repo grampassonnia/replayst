@@ -1,6 +1,6 @@
 # replayst
 
-Is a mobile app that allows you to track your game collection and check it anywhere, anytime. Leveraging the RAWG api database, you can add almost any official or indie game ever released and say goodbye to double purchases. (<-- Yes, I'm guilty of it).
+Is a mobile app that allows you to track your game collection and check it anywhere, anytime. Leveraging the RAWG api database, you can add almost any official or indie game ever released and say goodbye to double purchases. (<-- Yes, I'm guilty of it).  
 
 ![collection screen](https://github.com/grampassonnia/replayst/blob/master/readme.png?raw=true)
 
