@@ -12,6 +12,7 @@
 
 #### from client folder:
 - run `npm install` to install dependencies
+- create a .env file with your backend address and the API key from RAWG (more info in the NOTES below)
 - run `expo start` to start client
 
 #### from server folder:
@@ -22,3 +23,4 @@
 #### NOTES:
 - expo client runs only on stable node versions (run `nvm use --lts` to switch to the latest one)
 - user creation is not enabled in-app yet. To create a new user hit the `/register` endpoint with a post request using [Postman](https://www.postman.com) or a similar software. The body needs to be in json format. Data model and required fields can be found in **/server/models/user.js**
+- in order to call RAWG api you need to obtain a free key here --> [RAWG.io](https://rawg.io)
