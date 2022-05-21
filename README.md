@@ -12,11 +12,12 @@
 
 #### from client folder:
 - run `npm install` to install dependencies
-- create a .env file with your backend address and the API key from RAWG (more info in the NOTES below)
+- create a .env file containing your backend address and the API key from RAWG (more info in the NOTES below)
 - run `expo start` to start client
 
 #### from server folder:
 - run `npm install` to install dependencies
+- create a .env containing your database address
 - start mongodb in your local environment
 - run `npx nodemon index.js` to start the server
 
