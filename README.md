@@ -1,6 +1,4 @@
-# replayst
-
-
+# replayst  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 Is a mobile app that allows you to track your game collection and check it anywhere, anytime. Leveraging the RAWG api database, you can add almost any official or indie game ever released and say goodbye to double purchases. (<-- Yes, I'm guilty of it).
 
